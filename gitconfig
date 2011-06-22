@@ -1,0 +1,71 @@
+[user]
+	name = Stefano Manieri
+	email = stefano@manieri.info
+[core]
+	editor = mate -w
+	safecrlf = true
+	excludesfile = /Users/tud/.gitignore
+  editor = vim
+	autocrlf = true
+	whitespace = trailing-space,space-before-tab
+[color]
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+	ui = auto
+[color "diff"]
+  meta = yellow 
+[merge]
+	tool = opendiff
+[alias]
+	ci = commit
+	co = checkout
+	st = status
+	br = branch
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+[apply]
+	whitespace = nowarn
+[help]
+  autocorrect = 1
+[branch]
+	autosetupmerge = true
+
+[mergetool "p4merge"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \
+		"$PWD/$REMOTE" \
+		"$PWD/$LOCAL" \
+		"$PWD/$MERGED" 
+	keepBackup = false
+	trustExitCode = false
+
+[mergetool "diffmerge"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge \
+		--nosplash \
+		--result="$PWD/$MERGED" \
+		"$PWD/$BASE" \
+		"$PWD/$REMOTE" \
+		"$PWD/$LOCAL" 
+	keepBackup = false
+	trustExitCode = false
+
+[mergetool "kdiff3"]
+	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+
+[github]
+	user = tud
+	token = 2b76248433bc4ec2457ef0968452a1dd
+[gc]
+  auto = 1
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
+	renames = copies
+[rerere]
+	enabled = true
