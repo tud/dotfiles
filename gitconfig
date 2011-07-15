@@ -1,12 +1,12 @@
 [user]
-	name = Stefano Manieri
+	name = stefano
 	email = stefano@manieri.info
 [core]
 	editor = mate -w
 	safecrlf = true
 	excludesfile = /Users/tud/.gitignore
   editor = vim
-	autocrlf = true
+	autocrlf = false
 	whitespace = trailing-space,space-before-tab
 [color]
 	status = auto

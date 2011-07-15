@@ -232,3 +232,4 @@ alias firedev='/Applications/Firefox.app/Contents/MacOS/firefox-bin -no-remote -
 
 #source /usr/local/Cellar/coreutils/8.12/aliases
 
+alias gvim='/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-silent'
