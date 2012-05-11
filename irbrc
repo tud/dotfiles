@@ -1,4 +1,4 @@
-require "rubygems"
+require 'rubygems' unless defined? Gem
 
 begin
     require 'wirb'
@@ -8,12 +8,12 @@ rescue LoadError => err
     warn "Couldn't load Wirb: #{err}"
 end
 
-begin
-    require 'bond'
-    Bond.start
-rescue LoadError => err
-    warn "Couldn't load Bond: #{err}"
-end
+#begin
+#    require 'bond'
+#    Bond.start
+#rescue LoadError => err
+#    warn "Couldn't load Bond: #{err}"
+#end
 
 begin
     require 'hirb'
@@ -23,26 +23,28 @@ rescue LoadError => err
     warn "Couldn't load hirb: #{err}"
 end
 
-# loggers
-ActiveRecord::Base.logger = Logger.new STDOUT
-ActiveRecord::Base.clear_reloadable_connections!
-ActionController::Base.logger = Logger.new STDOUT
+if ENV.include?('RAILS_ENV') && !Object.const_defined?('RAILS_DEFAULT_LOGGER')
+  # loggers
+  ActiveRecord::Base.logger = Logger.new STDOUT
+  ActiveRecord::Base.clear_reloadable_connections!
+  ActionController::Base.logger = Logger.new STDOUT
 
-# named routes and helpers
-include Rails.application.routes.url_helpers
-default_url_options[:host] = Rails.application.class.parent_name.downcase
-#include ActionView::Helpers           # All Rails helpers
-include ApplicationController._helpers # Your own helpers
-# unfortunately that breaks some functionality (e.g. the named route helpers above)
-#  so, look at actionpack/lib/action_view/helpers.rb and choose the helpers you need
-#  (and which don't break anything), e.g.
-include ActionView::Helpers::DebugHelper
-include ActionView::Helpers::NumberHelper
-include ActionView::Helpers::RawOutputHelper
-include ActionView::Helpers::SanitizeHelper
-include ActionView::Helpers::TagHelper
-include ActionView::Helpers::TextHelper
-include ActionView::Helpers::TranslationHelper
+  # named routes and helpers
+  include Rails.application.routes.url_helpers
+  default_url_options[:host] = Rails.application.class.parent_name.downcase
+  #include ActionView::Helpers           # All Rails helpers
+  include ApplicationController._helpers # Your own helpers
+  # unfortunately that breaks some functionality (e.g. the named route helpers above)
+  #  so, look at actionpack/lib/action_view/helpers.rb and choose the helpers you need
+  #  (and which don't break anything), e.g.
+  include ActionView::Helpers::DebugHelper
+  include ActionView::Helpers::NumberHelper
+  #include ActionView::Helpers::RawOutputHelper
+  include ActionView::Helpers::SanitizeHelper
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::TranslationHelper
+end
 
 # setting prompt
 app_name = Rails.application.class.parent_name.downcase

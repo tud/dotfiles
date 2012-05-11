@@ -6,8 +6,9 @@
 	safecrlf = true
 	excludesfile = /Users/tud/.gitignore
   editor = vim
-	autocrlf = false
+	autocrlf = input
 	whitespace = trailing-space,space-before-tab
+	quotepath = false
 [color]
 	status = auto
 	branch = auto
@@ -69,3 +70,9 @@
 	renames = copies
 [rerere]
 	enabled = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

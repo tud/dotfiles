@@ -1,6 +1,0 @@
-set columns=150
-"set transparency=10
-set guioptions=aCce
-"set guifont=Monaco:h12
-"set guifont=Anonymous\ Pro:h13
-set guifont=Consolas:h14
