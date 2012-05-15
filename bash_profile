@@ -139,7 +139,7 @@ alias svdiff='sv diff --diff-cmd fmdiff' # OS-X SPECIFIC
 export ORACLE_HOME=/Users/tud/instantclient_10_2
 export TNS_ADMIN=$ORACLE_HOME
 export LD_LIBRARY_PATH=$ORACLE_HOME
-export DYLD_LIBRARY_PATH=$ORACLE_HOME
+#export DYLD_LIBRARY_PATH=$ORACLE_HOME
 export SQLPATH=$ORACLE_HOME
 export NLS_LANG="AMERICAN_AMERICA.UTF8"
 export PATH=/usr/local/git/bin:/usr/local/bin:/usr/local/sbin:$PATH:$ORACLE_HOME:/usr/bin
@@ -158,8 +158,8 @@ alias vmwarestart="sudo /Applications/VMware\ Fusion.app/Contents/Library/servic
 
 alias startmongo='mongod --dbpath ~/mongodb'
 alias cleanlogtermonal='sudo rm -f /private/var/log/asl/*.asl'
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
+#alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+#alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 alias offile='wget --mirror --html-extension --convert-links'
 

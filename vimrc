@@ -34,6 +34,7 @@ Bundle 'twerth/ir_black'
 "Bundle 'tomasr/molokai'
 Bundle 'jpo/vim-railscasts-theme'
 "Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'skammer/vim-css-color'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
@@ -74,6 +75,7 @@ filetype plugin indent on  " Automatically detect file types. (must turn on afte
 " Set leader to ,
 " Note: This line MUST come before any <leader> mappings
 let mapleader=","
+let g:mapleader=","
 
 " ----------------------------------------
 " Platform Specific Configuration
@@ -136,6 +138,9 @@ if exists('+colorcolumn')
   set colorcolumn=80 " Color the 80th column differently
 endif
 set cursorline
+set showmode
+set showmatch
+set copyindent
 
 " ---------------
 " Behaviors
@@ -239,6 +244,31 @@ if has("autocmd")
         \   exe "normal! g`\"" |
         \ endif
 endif
+
+" Enable omni completion. (Ctrl-X Ctrl-O)
+ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+ autocmd FileType c set omnifunc=ccomplete#Complete
+ autocmd FileType java set omnifunc=javacomplete#Complete
+ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+ " use syntax complete if nothing else available
+ if has("autocmd") && exists("+omnifunc")
+   autocmd Filetype *
+               \if &omnifunc == "" |
+               \     setlocal omnifunc=syntaxcomplete#Complete |
+               \endif
+ endif
+
+ set cot-=preview "disable doc preview in omnicomplete
+
+" make CSS omnicompletion work for SASS and SCSS
+autocmd BufNewFile,BufRead *.scss             set ft=scss.css
+autocmd BufNewFile,BufRead *.sass             set ft=sass.css
+
 " ----------------------------------------
 " Plugin Configuration
 " ----------------------------------------
