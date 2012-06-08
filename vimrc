@@ -27,12 +27,14 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'Lokaltog/vim-powerline'
 "Bundle 'henrik/vim-indexed-search'
-"Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdtree'
 "Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'twerth/ir_black'
-"Bundle 'altercation/vim-colors-solarized'
-"Bundle 'tomasr/molokai'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tomasr/molokai'
 Bundle 'jpo/vim-railscasts-theme'
+Bundle 'croaker/mustang-vim'
+"Bundle 'vim-scripts/Mustang2'
 "Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'skammer/vim-css-color'
 " Commands
@@ -49,6 +51,7 @@ Bundle 'Shougo/neocomplcache-snippets-complete'
 "Bundle 'HTML-AutoCloseTag'
 Bundle 'Townk/vim-autoclose'
 Bundle 'sickill/vim-pasta'
+Bundle 'vim-scripts/sudo.vim'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'Raimondi/delimitMate'
 " Language Additions
@@ -67,8 +70,12 @@ Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 "Bundle 'hallison/vim-markdown'
 Bundle 'spf13/PIV'
 Bundle 'othree/html5.vim'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'groenewege/vim-less'
 " MatchIt
 Bundle 'matchit.zip'
+" vim JDE
+Bundle 'corntrace/vjde'
 
 filetype plugin indent on  " Automatically detect file types. (must turn on after Vundle)
 
@@ -99,7 +106,7 @@ elseif has('gui_macvim')
 
   " Custom Menlo font for Powerline
   " From: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
-  set guifont=Menlo\ for\ Powerline:h12
+  set guifont=Menlo\ for\ Powerline:h14
 
   " Hide Toolbar in MacVim
   if has("gui_running")
@@ -118,7 +125,13 @@ endif
 " Color
 " ---------------
 set background=dark
-colorscheme ir_black
+"colorscheme ir_black
+if &t_Co >= 256 || has("gui_running")
+  colorscheme mustang
+else
+  colorscheme ir_black
+endif
+" colorscheme solarized
 
 " ---------------
 " UI
@@ -169,6 +182,7 @@ set autoindent
 set smarttab
 set expandtab
 set backspace=indent,eol,start
+set gdefault
 
 " Trailing whitespace
 " Only shown when not in insert mode so I don't go insane.
@@ -372,7 +386,9 @@ nnoremap <leader>nn :NERDTreeMirrorToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd vimenter * if !argc() | NERDTree | endif
+map <F3> :NERDTreeToggle<CR>
 
 " ---------------
 " Indent Guides
@@ -428,6 +444,7 @@ endif
 let g:Powerline_theme='skwp'
 let g:Powerline_colorscheme='skwp'
 call Pl#Theme#InsertSegment('ws_marker', 'after', 'lineinfo')
+set fillchars+=stl:\ ,stlnc:\
 
 " ---------------
 " EasyMotion
@@ -508,3 +525,4 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
 nmap ,w :StripTrailingWhitespaces<CR>
+

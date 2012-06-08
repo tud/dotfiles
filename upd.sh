@@ -13,7 +13,8 @@ do
     svn update
   elif [ -d ".git" ]; then
     if [ $clean = "YES" ]; then
-      git gc
+      git fsck
+      git gc --prune
     fi
     git pull
   fi 
