@@ -32,6 +32,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'twerth/ir_black'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tomasr/molokai'
+Bundle 'noahfrederick/Hemisu'
 "Bundle 'jpo/vim-railscasts-theme'
 Bundle 'jgdavey/vim-railscasts'
 Bundle 'croaker/mustang-vim'
@@ -51,7 +52,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
 Bundle 'gregsexton/MatchTag'
 Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'Shougo/neosnippet'
+" Bundle 'Shougo/neocomplcache-snippets-complete'
 "Bundle 'HTML-AutoCloseTag'
 Bundle 'Townk/vim-autoclose'
 Bundle 'sickill/vim-pasta'
@@ -82,6 +84,9 @@ Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'matchit.zip'
 " vim JDE
 Bundle 'corntrace/vjde'
+Bundle 'mattn/zencoding-vim'
+Bundle 'godlygeek/tabular'
+Bundle 'humiaozuzu/TabBar'
 
 filetype plugin indent on  " Automatically detect file types. (must turn on after Vundle)
 
@@ -112,7 +117,9 @@ elseif has('gui_macvim')
 
   " Custom Menlo font for Powerline
   " From: https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
-  set guifont=Menlo\ for\ Powerline:h14
+  "set guifont=Menlo\ for\ Powerline:h14
+  " set guifont=Source\ Code\ Pro:h14
+  set anti enc=utf-8 gfn=Source\ Code\ Pro:h14,Menlo:h14,Monaco:h14
 
   " Hide Toolbar in MacVim
   if has("gui_running")
@@ -130,13 +137,13 @@ endif
 " ---------------
 " Color
 " ---------------
-set background=dark
 "colorscheme ir_black
 if &t_Co >= 256 || has("gui_running")
-  colorscheme mustang
+  colorscheme hemisu
 else
   colorscheme ir_black
 endif
+set background=dark
 " colorscheme solarized
 
 " ---------------
@@ -176,6 +183,7 @@ set timeoutlen=350     " Time to wait for a command (after leader for example)
 set foldlevelstart=99  " Remove folds
 set formatoptions=crql
 set iskeyword+=$,@     " Add extra characters that are valid parts of variables
+set lazyredraw         " Don't update the display while executing macros
 set pastetoggle=<F2>
 
 " ---------------
@@ -395,6 +403,7 @@ let NERDTreeChDirMode=2 " Change the NERDTree directory to the root node
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 autocmd vimenter * if !argc() | NERDTree | endif
 map <F3> :NERDTreeToggle<CR>
+map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 " ---------------
 " Indent Guides

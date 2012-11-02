@@ -3,7 +3,7 @@
 	email = stefano@manieri.info
 [core]
 	editor = mate -w
-	safecrlf = true
+	safecrlf = false
 	excludesfile = /Users/tud/.gitignore
   editor = vim
 	autocrlf = input

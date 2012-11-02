@@ -2,9 +2,7 @@ if [ -d ~/bin ]; then
 	export PATH=:~/bin:$PATH  # add your bin folder to the path, if you have it.  It's a good place to add all your scripts
 fi
 
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
-fi
+[[ -f `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh ]]
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
 . `brew --prefix`/etc/bash_completion
@@ -13,7 +11,7 @@ fi
 # Colorize the Terminal
 export CLICOLOR=1;
 
-[[ -s "/Users/tud/.rvm/scripts/rvm" ]] && source "/Users/tud/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function* ]]
 
 # Setup some colors to use later in interactive shell or scripts
 export COLOR_NC='\033[0m' # No Color
@@ -73,7 +71,7 @@ export SVN_EDITOR='${EDITOR}'
 
 export ORACLE_HOME=/Users/tud/instantclient_10_2
 export TNS_ADMIN=$ORACLE_HOME
-export LD_LIBRARY_PATH=$ORACLE_HOME
+#export LD_LIBRARY_PATH=$ORACLE_HOME
 #export DYLD_LIBRARY_PATH=$ORACLE_HOME
 export SQLPATH=$ORACLE_HOME
 export NLS_LANG="AMERICAN_AMERICA.UTF8"
