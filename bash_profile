@@ -10,3 +10,5 @@ PS1='lapto\$ '
 
 [ -f ~/.bash_env ] && . ~/.bash_env
 
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
