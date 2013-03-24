@@ -420,6 +420,7 @@ set statusline+=%{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
 set statusline+=%{(&bomb?\",BOM\":\"\")}\            "Encoding2
 set statusline+=%{&ff}\                              "FileFormat (dos/unix..)
 set statusline+=%m%r%w
+set statusline+=%{fugitive#statusline()}
 set statusline+=%=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
 set statusline+=col:%03c\                            "Colnr
 set statusline+=%P\ \                      "Modified? Readonly? Top/bot.
