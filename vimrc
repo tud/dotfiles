@@ -93,9 +93,9 @@ filetype plugin indent on  " Automatically detect file types. (must turn on afte
 if has('win32') || has('win64')
   " Windows
   source $VIMRUNTIME/mswin.vim
-  set guifont=Consolas:h10
-  set guioptions-=T " Toolbar
-  set guioptions-=m " Menubar
+  set guifont=Source\ Code\ Pro:h9,Consolas:h10
+  " set guioptions-=T " Toolbar
+  " set guioptions-=m " Menubar
 
   " Set height and width on Windows
   set lines=60
@@ -144,7 +144,7 @@ set cmdheight=2    " Make the command area two lines high
 set nolist         " Display unprintable characters
 set showbreak=↪
 if exists('+colorcolumn')
-  set colorcolumn=80 " Color the 80th column differently
+  set colorcolumn=120 " Color the 80th column differently
 endif
 set cursorline
 set showmode
@@ -424,3 +424,4 @@ set statusline+=%{fugitive#statusline()}
 set statusline+=%=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
 set statusline+=col:%03c\                            "Colnr
 set statusline+=%P\ \                      "Modified? Readonly? Top/bot.
+
