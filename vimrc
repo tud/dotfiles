@@ -82,6 +82,8 @@ Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'matchit.zip'
 Bundle 'corntrace/vjde'
 Bundle 'mattn/zencoding-vim'
+Bundle 'airblade/vim-gitgutter'
+
 " Bundle 'godlygeek/tabular'
 
 filetype plugin indent on  " Automatically detect file types. (must turn on after Vundle)
